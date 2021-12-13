@@ -15,4 +15,6 @@ export class CreateUserDto {
   readonly role: string;
 }
 
+// add a comment
+
 export class UpdateUserDto extends PartialType(CreateUserDto) {}
