@@ -17,6 +17,6 @@ export class AppController {
 
   @Get('/ruta/')
   hello() {
-    return 'con /sas/';
+    return this.appService.getHello();
   }
 }

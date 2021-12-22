@@ -1,14 +1,15 @@
 import { Injectable, Inject } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
+import config from '../config'
 
 @Injectable()
 export class AppService {
 
-  constructor(
-    @Inject('API_KEY') private apikey: string,
-    @Inject('TASKS') private tasks: any[]) { }
+  constructor(@Inject(config.KEY) private configEnv: ConfigType<typeof config>) { }
 
   getHello(): string {
-    console.log(this.tasks)
-    return `Hello World! ${this.apikey}`;
+    const apiKey = this.configEnv.apiKey
+    const dataBaseName = this.configEnv.database
+    return `Hello World! ${apiKey} and ${dataBaseName}`;
   }
 }
