@@ -11,7 +11,7 @@ export class AppService {
   getHello(): string {
     const apiKey = this.configEnv.apiKey;
     const dataBaseName = this.configEnv.database;
-    console.log('holas')
+    console.log('holas', apiKey, dataBaseName)
     return `Hello World! ${apiKey} and ${dataBaseName}`;
   }
 }
