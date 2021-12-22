@@ -12,13 +12,13 @@ import {
 
 import { BrandsService } from '../services/brands.service';
 import { CreateBrandDto, UpdateBrandDto } from '../dtos/brand.dtos';
-import { ApiTags } from '@nestjs/swagger'
+import { ApiTags } from '@nestjs/swagger';
 import { applyIsOptionalDecorator } from '@nestjs/mapped-types';
 
 @ApiTags('Brands')
 @Controller('brands')
 export class BrandsController {
-  constructor(private brandsService: BrandsService) { }
+  constructor(private brandsService: BrandsService) {}
 
   @Get()
   findAll() {

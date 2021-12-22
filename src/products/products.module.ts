@@ -12,4 +12,4 @@ import { CategoriesService } from './services/categories.service';
   providers: [ProductsService, BrandsService, CategoriesService],
   exports: [ProductsService],
 })
-export class ProductsModule { }
+export class ProductsModule {}
