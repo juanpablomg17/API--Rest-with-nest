@@ -14,11 +14,17 @@ import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService) { }
 
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+
+  @Get('tasks')
+  getTasks() {
+    return this.usersService.getTasks();
   }
 
   @Get(':id')
@@ -48,4 +54,6 @@ export class UsersController {
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.remove(+id);
   }
+
+
 }

@@ -6,13 +6,15 @@ import { Order } from '../entities/order.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 
 import { ProductsService } from '../../products/services/products.service';
+import { Client } from 'pg';
 
 @Injectable()
 export class UsersService {
   constructor(
     private productServices: ProductsService,
     private configService: ConfigService,
-  ) {}
+    @Inject('PG') private clientPG: Client,
+  ) { }
   private counterId = 1;
   private users: User[] = [
     {
@@ -74,5 +76,17 @@ export class UsersService {
       user,
       products: this.productServices.findAll(),
     };
+  }
+
+  getTasks() {
+    return new Promise((resolve, reject) => {
+      this.clientPG.query('SELECT * FROM tasks', (err, res) => {
+        if (err) {
+          reject(err)
+        }
+        console.log(res.rows)
+        resolve(res.rows)
+      })
+    })
   }
 }

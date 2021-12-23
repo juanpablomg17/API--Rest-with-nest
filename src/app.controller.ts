@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
   @Get()
   getHello(): string {
@@ -15,8 +15,8 @@ export class AppController {
     return 'yo soy nuevo';
   }
 
-  @Get('/ruta/')
+  @Get('tasks')
   hello() {
-    return this.appService.getHello();
+    return this.appService.getTasks();
   }
 }
